@@ -26,10 +26,10 @@ var fs = require('fs');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  response.send('This page has an mjpeg embedded in it:<br/><img src=count.mjpeg><br/> Click here to <a href=count.mjpeg>view the image by itself</a>. <p><b>Update:</b> This page was created to demo a bug in Chrome 20/21 where an mpjeg stream viewed directly did not animate (<a href=http://crbug.com/135337>chrome bug 135337</a>). The issue has been fixed in versions >= 22. I\'ll leave this page up for anyone else trying to test mjpeg functionality.</p><p>Souce code for this mjpeg server can be found at <a href="https://github.com/psanford/node-mjpeg-test-server">https://github.com/psanford/node-mjpeg-test-server</a>.<p>');
+  response.send('<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta http-equiv="cleartype" content="on"></head><body>This page has an mjpeg embedded in it:<br/><img src=count.jpg><br/> Click here to <a href=count.jpg>view the image by itself</a>. <p><b>Update:</b> This page was created to demo a bug in Chrome 20/21 where an mpjeg stream viewed directly did not animate (<a href=http://crbug.com/135337>chrome bug 135337</a>). The issue has been fixed in versions >= 22. I\'ll leave this page up for anyone else trying to test mjpeg functionality.</p><p>Souce code for this mjpeg server can be found at <a href="https://github.com/psanford/node-mjpeg-test-server">https://github.com/psanford/node-mjpeg-test-server</a>.<p></body></html>');
 });
 
-app.get('/count.mjpeg', function(request, res) {
+app.get('/count.jpg', function(request, res) {
   res.writeHead(200, {
     'Content-Type': 'multipart/x-mixed-replace; boundary=myboundary',
     'Cache-Control': 'no-cache',
